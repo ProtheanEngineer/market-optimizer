@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["fullTextSearch", "fullTextIndex"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Mercadona_Categories {
+  id Int @id
+  name String @db.LongText
+}
+
+model Mercadona_Subcategories {
+  id Int @id 
+  name String @db.LongText
+  id_category Int
+}
+
+model Mercadona_Product_Agrupations {
+  id Int @id
+  name String @db.LongText
+  id_subcategory Int
+}
+
+model Mercadona_Products {
+  id Int @id 
+  name String @db.LongText
+  packaging String? @db.LongText
+  image_url String @db.LongText
+  unit_size Float?
+  reference_format String @db.LongText
+  price String @db.LongText
+  id_agrupation Int 
+}
