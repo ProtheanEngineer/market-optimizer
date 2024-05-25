@@ -27,8 +27,8 @@ interface Categoria {
     price: string;
     image_url: string;
     id_agrupation: number;
-    packaging: string; 
-    unit_size: string; 
+    packaging: string | null; 
+    unit_size: number | null; 
     reference_format: string;
   }
 

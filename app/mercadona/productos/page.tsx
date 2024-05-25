@@ -16,7 +16,7 @@ const ProductsPage = async() => {
   })
   const categorias = await db.mercadona_Categories.findMany({
     orderBy: {
-      NAME: "asc",
+      name: "asc",
     }
   })
   const subcategorias = await db.mercadona_Subcategories.findMany({
@@ -35,8 +35,8 @@ const ProductsPage = async() => {
       />
       <Accordion type="single" collapsible className="w-full">
       {categorias.map((categoria) => (
-        <AccordionItem key={categoria.id} value={categoria.NAME}>
-          <AccordionTrigger>{categoria.NAME}</AccordionTrigger>
+        <AccordionItem key={categoria.id} value={categoria.name}>
+          <AccordionTrigger>{categoria.name}</AccordionTrigger>
           <AccordionContent>
             {subcategorias
               .filter((subcategoria) => subcategoria.id_category === categoria.id)
